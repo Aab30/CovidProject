@@ -1,0 +1,5 @@
+name,surname,password,phoneNumber,email,positive,last_test_date
+Ben;Aerts;1234;012345678;ben.aerts@hotmail.com;false;N/A
+Patient;Nieuw;1234;041234567;patient.nieuw@hotmail.com;false;N/A
+Voornaam;Achternaam;1234;041234566;voornaam.achternaam@hotmail.com;true;N/A
+Jan;Janssen;1234;047654321;jan.janssen@gmail.com;true;N/A
