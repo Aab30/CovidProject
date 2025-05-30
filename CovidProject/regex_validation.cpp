@@ -2,13 +2,12 @@
 #include <regex>
 #include "regex_validation.h"
 
-
-bool RegexValidation::isValidated(ValType type, const std::string& string) {
+bool RegexValidation::IsValidated(ValType _type, const std::string& _string) {
 
 	bool validated;
-	std::regex regex_validation; //Contains regex expression for validation
+	std::regex regex_validation;
 
-	switch (type) {
+	switch (_type) {
 	case(ValType::Password):
 		/* (?=.*\\d) Checks if there's a number
 		   (?=.*[a-z]) Checks if there's a small letter
@@ -31,13 +30,12 @@ bool RegexValidation::isValidated(ValType type, const std::string& string) {
 		break;
 
 	case(ValType::EMail):
-		//^[\w-\\.]+ Checks to see if in the beginning there is at least one word character or a - or a . 
+		//^[\w-\.]+ Checks to see if in the beginning there is at least one word character or a - or a . 
 		//@ Thereafter must come a @
-		//([\\w-]+\\.)+ After the @  must be atleast once one or more word characters or - followed by a .
-		//[\\w-]{2,4} After the point should be another 2-4 word characters
+		//([\w-]+\.)+ After the @  must be atleast once one or more word characters or - followed by a .
+		//[\w-]{2,4} After the point should be another 2-4 word characters
 		regex_validation = ("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
 	}
-
-	validated = std::regex_match(string, regex_validation); 
+	validated = std::regex_match(_string, regex_validation);
 	return validated;
 }

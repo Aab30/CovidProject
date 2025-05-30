@@ -18,3 +18,5 @@ void DoctorMenu::on_signoffButton_clicked() {
 
 }
 
+DoctorMenu::~DoctorMenu() {
+}

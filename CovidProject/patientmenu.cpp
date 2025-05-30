@@ -4,3 +4,5 @@ PatientMenu::PatientMenu(QWidget *parent) : QMainWindow(parent) {
 	ui.setupUi(this);
 }
 
+PatientMenu::~PatientMenu() {
+}

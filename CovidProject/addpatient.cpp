@@ -2,6 +2,7 @@
 #include <fstream>	
 #include <iostream>
 #include <QDebug>
+#include "patient.h"
 
 AddPatient::AddPatient(QWidget *parent) {
 	ui.setupUi(this);
@@ -19,13 +20,13 @@ void AddPatient::on_addButton_clicked() {
 		return;
 	}
 
-	else if (!(RegexValidation::isValidated(ValType::EMail, email.toStdString()))) {
+	else if (!(RegexValidation::IsValidated(ValType::EMail, email.toStdString()))) {
 		QMessageBox::warning(this, "Error", "Not a valable e-mail adres");
 		return;
 		
 	}
 
-	else if (!(RegexValidation::isValidated(ValType::GSM, phone.toStdString())) && !(RegexValidation::isValidated(ValType::Phone, phone.toStdString()))) {
+	else if (!(RegexValidation::IsValidated(ValType::GSM, phone.toStdString())) && !(RegexValidation::IsValidated(ValType::Phone, phone.toStdString()))) {
 		QMessageBox::warning(this, "Error", "Not a valable phone number");
 		return;
 
@@ -38,13 +39,25 @@ void AddPatient::on_addButton_clicked() {
 	}
 
 	//Patient CSV structure: name,surname,password,phoneNumber,email,positive,last_test_date
+	std::string name_std = name.toStdString();
+	std::string surname_std = surname.toStdString();
+	std::string phone_std = phone.toStdString();
+	std::string email_std = email.toStdString();
 	std::string positive = "false";
 	std::string last_test_date = "N/A";
 	std::string password = "1234"; //Zorgen dat paswoord random gegenereerd wordt
-	file_stream << name.toStdString() << ";" << surname.toStdString() << ";" << password << ";" << phone.toStdString() << ";" << email.toStdString() << ";" << positive << ";" << last_test_date << std::endl;
+	file_stream << name_std << ";" << surname_std << ";" << password << ";" << phone_std << ";" << email_std << ";" << positive << ";" << last_test_date << std::endl;
 	file_stream.close();
+
+	bool positive_bool = (positive == "true");
+	Patient* new_patient = new Patient(name_std, surname_std, password, phone_std, email_std, positive_bool, last_test_date);
+	emit patientAdded(new_patient);
 	QMessageBox::information(this, "Succes", "A new patient has been added");
 	this->accept();
 
+
+}
+
+AddPatient::~AddPatient() {
 }
 

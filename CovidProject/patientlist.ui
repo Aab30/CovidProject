@@ -65,7 +65,7 @@
    <widget class="QPushButton" name="addpatientButton">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>380</x>
       <y>60</y>
       <width>75</width>
       <height>23</height>
@@ -73,6 +73,19 @@
     </property>
     <property name="text">
      <string>Add patient</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="removepatientButton">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>60</y>
+      <width>101</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Remove patient</string>
     </property>
    </widget>
   </widget>

@@ -17,23 +17,10 @@
    <property name="geometry">
     <rect>
      <x>25</x>
-     <y>41</y>
+     <y>21</y>
      <width>351</width>
-     <height>241</height>
+     <height>261</height>
     </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="removevpatientButton">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>10</y>
-     <width>75</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Remove patient</string>
    </property>
   </widget>
  </widget>

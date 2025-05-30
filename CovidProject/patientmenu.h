@@ -8,7 +8,7 @@ class PatientMenu : public QMainWindow
 
 public:
 	PatientMenu(QWidget *parent = Q_NULLPTR);
-	//~PatientMenu();
+	~PatientMenu();
 	
 private slots:
 private:

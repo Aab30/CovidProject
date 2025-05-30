@@ -5,8 +5,8 @@
 
 LoginScreen::LoginScreen(QWidget *parent) : QDialog(parent) {
 	ui.setupUi(this);
-	m_patients = CsvLoader::loadPersons("Data/patient.csv", "patient");
-	m_doctors = CsvLoader::loadPersons("Data/doctor.csv", "doctor");
+	m_patients = CsvLoader::LoadPersons("Data/patient.csv", "patient");
+	m_doctors = CsvLoader::LoadPersons("Data/doctor.csv", "doctor");
 }
 
 void LoginScreen::on_loginButton_clicked() {
@@ -21,9 +21,9 @@ void LoginScreen::on_loginButton_clicked() {
 	else if (ui.doctorButton->isChecked()) {
 		for (const auto& person : m_doctors) {
 			if (person->getEmail() == username.toStdString() && person->getPassword() == password.toStdString()) {
-				DoctorMenu* doctorMenu = new DoctorMenu();
-				doctorMenu->setAttribute(Qt::WA_DeleteOnClose);
-				doctorMenu->show();
+				DoctorMenu* doctormenu = new DoctorMenu();
+				doctormenu->setAttribute(Qt::WA_DeleteOnClose);
+				doctormenu->show();
 				this->close();
 				return;
 			}
@@ -46,3 +46,5 @@ void LoginScreen::on_loginButton_clicked() {
 	
 }
 
+LoginScreen::~LoginScreen() {
+}

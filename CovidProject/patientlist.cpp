@@ -6,12 +6,13 @@
 
 PatientList::PatientList(QWidget *parent) : QMainWindow(parent), m_table_model(nullptr) {
 	ui.setupUi(this);
-	patients = CsvLoader::loadPersons("Data/patient.csv", "patient");
+	m_patients = CsvLoader::LoadPersons("Data/patient.csv", "patient");
 	m_table_model = new QStandardItemModel(this);
 	m_filter_model = new PatientFilterModel(this);
 
 	ui.patientView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 	ui.patientView->setSortingEnabled(true);
+	ui.patientView->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
 	m_filter_model->setSourceModel(m_table_model);
 	ui.patientView->setModel(m_filter_model);
@@ -27,13 +28,16 @@ PatientList::PatientList(QWidget *parent) : QMainWindow(parent), m_table_model(n
 void PatientList::fillTable() {
 	m_table_model->setColumnCount(3);
 	m_table_model->setHorizontalHeaderLabels({ "Patient", "Positive", "Last test" });
-	for (const auto& p : patients) {
+	for (const auto& p : m_patients) {
 		if (Patient* patient = dynamic_cast<Patient*>(p.get())) { //p.get returns a raw pointer but this pointer is still owned by the std::unique_ptr so destructor should not be called
 
 			QList<QStandardItem*> row;
 			auto fullname = new QStandardItem(QString::fromStdString(patient->getSurname() + " " + patient->getName()));
+			fullname->setFlags(fullname->flags() & ~Qt::ItemIsEditable);
 			auto positive = new QStandardItem(patient->isPositive() ? "Yes" : "No");
+			positive->setFlags(positive->flags() & ~Qt::ItemIsEditable);
 			auto last_test_date = new QStandardItem(QString::fromStdString(patient->getLastTestDate()));
+			last_test_date->setFlags(last_test_date->flags() & ~Qt::ItemIsEditable);
 			row << fullname <<  positive << last_test_date;
 			m_table_model->appendRow(row);
 		}
@@ -53,8 +57,8 @@ void PatientList::onPatientDoubleClicked(const QModelIndex& _index) {
 	QModelIndex source_index = m_filter_model->mapToSource(_index); //Trought the connector you get an index from the filter model but because of sorting/filtering this does not necessarily correspond to the correct index from the source model(m_table_model)
 	int row_number = source_index.row();
 	
-	if (row_number >= 0 && row_number < patients.size()) {
-		Patient* patient = dynamic_cast<Patient*>(patients[row_number].get()); //Get patient out of patient vector
+	if (row_number >= 0 && row_number < m_patients.size()) {
+		Patient* patient = dynamic_cast<Patient*>(m_patients[row_number].get()); //Get patient out of patient vector
 		if (patient) {
 			m_patient_details = new PatientDetails(patient, this);
 			m_patient_details->exec();
@@ -65,6 +69,7 @@ void PatientList::onPatientDoubleClicked(const QModelIndex& _index) {
 
 void PatientList::on_addpatientButton_clicked() {
 	AddPatient addpatient;
+	connect(&addpatient, &AddPatient::patientAdded, this, &PatientList::addPatientToList);
 	addpatient.exec();
 }
 
@@ -78,14 +83,29 @@ void PatientList::on_removepatientButton_clicked() {
 	QModelIndex source_index = m_filter_model->mapToSource(selected_index);
 	int row_number = source_index.row();
 
-	if (row_number >= 0 && row_number < patients.size()) {
-		patients.erase(patients.begin() + row_number);
+	if (row_number >= 0 && row_number < m_patients.size()) {
+		m_patients.erase(m_patients.begin() + row_number); //.begin is nodig omdat .erase een iterator gebruikt en niet gewoon een index .begin geeft de iterator van het begin van de vector en row_number verhooogt deze dan tot naar de juiste patient gewezen wordt
 		m_table_model->removeRow(row_number);
+
+		CsvLoader::SavePatients(m_patients, "Data/patient.csv");
 	}
 
 }
 
-void PatientList::
+void PatientList::addPatientToList(Patient* _new_patient) {
+		QList<QStandardItem*> row;
+		auto fullname = new QStandardItem(QString::fromStdString(_new_patient->getSurname() + " " + _new_patient->getName()));
+		fullname->setFlags(fullname->flags() & ~Qt::ItemIsEditable);
+		auto positive = new QStandardItem(_new_patient->isPositive() ? "Yes" : "No");
+		positive->setFlags(positive->flags() & ~Qt::ItemIsEditable);
+		auto last_test_date = new QStandardItem(QString::fromStdString(_new_patient->getLastTestDate()));
+		last_test_date->setFlags(last_test_date->flags() & ~Qt::ItemIsEditable);
+		row << fullname <<  positive << last_test_date;
+		m_table_model->appendRow(row);
+		
+		m_patients.push_back(std::unique_ptr<Person>(_new_patient));
+}
+
 
 PatientList::~PatientList() {
 }

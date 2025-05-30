@@ -3,26 +3,26 @@
 #include <string>
 
 class Person {
-protected:      // Only accessible in this class and derived classes
-	std::string name;
-	std::string surname;
-	std::string ID;
-	std::string email;
-	std::string phoneNumber;
-	std::string password;
+protected:
+	std::string m_name;
+	std::string m_surname;
+	std::string m_ID;
+	std::string m_email;
+	std::string m_phoneNumber;
+	std::string m_password;
 
 public:
-	Person(const std::string& name, const std::string& surname, const std::string& password, const std::string& phoneNumber, const std::string& email);
+	Person(const std::string& _name, const std::string& _surname, const std::string& _password, const std::string& _phoneNumber, const std::string& _email);
 	std::string getName() const;
 	std::string getSurname() const;
 	std::string getPassword() const;
 	std::string getEmail() const;
 	std::string getPhoneNumber() const;
-	void setName(const std::string& newName);
-	void setSurname(const std::string& newSurname);
-	void setPassword(const std::string& newPassword);
-	void setPhoneNumber(const std::string& newPhoneNumber);
-	void setEmail(const std::string& newEmail);
+	void setName(const std::string& _newName);
+	void setSurname(const std::string& _newSurname);
+	void setPassword(const std::string& _newPassword);
+	void setPhoneNumber(const std::string& _newPhoneNumber);
+	void setEmail(const std::string& _newEmail);
 	virtual ~Person();
 };
 

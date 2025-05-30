@@ -40,7 +40,7 @@ public:
     QSpacerItem *verticalSpacer_4;
     QPushButton *covidtestButton;
     QSpacerItem *verticalSpacer_6;
-    QPushButton *addpatientButton;
+    QPushButton *accountButton;
     QSpacerItem *verticalSpacer_5;
     QPushButton *signoffButton;
     QSpacerItem *verticalSpacer_2;
@@ -122,10 +122,10 @@ public:
 
         verticalLayout->addItem(verticalSpacer_6);
 
-        addpatientButton = new QPushButton(layoutWidget);
-        addpatientButton->setObjectName(QString::fromUtf8("addpatientButton"));
+        accountButton = new QPushButton(layoutWidget);
+        accountButton->setObjectName(QString::fromUtf8("accountButton"));
 
-        verticalLayout->addWidget(addpatientButton);
+        verticalLayout->addWidget(accountButton);
 
         verticalSpacer_5 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -170,7 +170,7 @@ public:
         title->setText(QApplication::translate("DoctorMenu", "Main menu", nullptr));
         patientlistButton->setText(QApplication::translate("DoctorMenu", "Patient list", nullptr));
         covidtestButton->setText(QApplication::translate("DoctorMenu", "Covid test", nullptr));
-        addpatientButton->setText(QApplication::translate("DoctorMenu", "Add patient", nullptr));
+        accountButton->setText(QApplication::translate("DoctorMenu", "My account", nullptr));
         signoffButton->setText(QApplication::translate("DoctorMenu", "Sign off", nullptr));
     } // retranslateUi
 

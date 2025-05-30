@@ -16,6 +16,7 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableView>
 #include <QtWidgets/QWidget>
@@ -29,6 +30,8 @@ public:
     QTableView *patientView;
     QComboBox *testresultBox;
     QLineEdit *searchEdit;
+    QPushButton *addpatientButton;
+    QPushButton *removepatientButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -51,6 +54,12 @@ public:
         searchEdit = new QLineEdit(centralwidget);
         searchEdit->setObjectName(QString::fromUtf8("searchEdit"));
         searchEdit->setGeometry(QRect(40, 60, 113, 20));
+        addpatientButton = new QPushButton(centralwidget);
+        addpatientButton->setObjectName(QString::fromUtf8("addpatientButton"));
+        addpatientButton->setGeometry(QRect(380, 60, 75, 23));
+        removepatientButton = new QPushButton(centralwidget);
+        removepatientButton->setObjectName(QString::fromUtf8("removepatientButton"));
+        removepatientButton->setGeometry(QRect(540, 60, 101, 23));
         PatientList->setCentralWidget(centralwidget);
         menubar = new QMenuBar(PatientList);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -73,6 +82,8 @@ public:
         testresultBox->setItemText(2, QApplication::translate("PatientList", "Negative", nullptr));
 
         searchEdit->setPlaceholderText(QApplication::translate("PatientList", "Search patient...", nullptr));
+        addpatientButton->setText(QApplication::translate("PatientList", "Add patient", nullptr));
+        removepatientButton->setText(QApplication::translate("PatientList", "Remove patient", nullptr));
     } // retranslateUi
 
 };
