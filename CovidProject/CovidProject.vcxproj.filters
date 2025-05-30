@@ -72,6 +72,9 @@
     <ClCompile Include="patientdetails.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="error_handling.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="mainwindow.h">
@@ -144,6 +147,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="regex_validation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="error_handling.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,12 +1,19 @@
 #include "loginscreen.h"
 #include "doctormenu.h"
 #include "patientmenu.h"
+#include "error_handling.h"
 
 
 LoginScreen::LoginScreen(QWidget *parent) : QDialog(parent) {
 	ui.setupUi(this);
-	m_patients = CsvLoader::LoadPersons("Data/patient.csv", "patient");
-	m_doctors = CsvLoader::LoadPersons("Data/doctor.csv", "doctor");
+
+	ErrorType error;
+	auto all_persons = CsvLoader::LoadAllPersons("Data/persons.csv", error);
+	ErrorHandling::ReportError(error, "LoginScreen - Constructor");
+	m_patients = CsvLoader::FilterPatients(all_persons, error);
+	ErrorHandling::ReportError(error, "LoginScreen - Constructor");
+	m_doctors = CsvLoader::FilterDoctors(all_persons, error);
+	ErrorHandling::ReportError(error, "LoginScreen - Constructor");
 }
 
 void LoginScreen::on_loginButton_clicked() {
@@ -19,8 +26,8 @@ void LoginScreen::on_loginButton_clicked() {
 	}
 
 	else if (ui.doctorButton->isChecked()) {
-		for (const auto& person : m_doctors) {
-			if (person->getEmail() == username.toStdString() && person->getPassword() == password.toStdString()) {
+		for (const auto& doctor : m_doctors) {
+			if (doctor->getEmail() == username.toStdString() && doctor->getPassword() == password.toStdString()) {
 				DoctorMenu* doctormenu = new DoctorMenu();
 				doctormenu->setAttribute(Qt::WA_DeleteOnClose);
 				doctormenu->show();
@@ -31,8 +38,8 @@ void LoginScreen::on_loginButton_clicked() {
 	}
 
 	else if (ui.patientButton->isChecked()) {
-		for (const auto& person : m_patients) {
-			if (person->getEmail() == username.toStdString() && person->getPassword() == password.toStdString()) {
+		for (const auto& patient: m_patients) {
+			if (patient->getEmail() == username.toStdString() && patient->getPassword() == password.toStdString()) {
 				PatientMenu* patientmenu = new PatientMenu();
 				patientmenu->show();
 				this->close();

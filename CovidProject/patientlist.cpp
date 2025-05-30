@@ -3,10 +3,16 @@
 #include "patient.h"
 #include "csvloader.h"
 #include <QDebug>
+#include "data_types.h"
+#include "error_handling.h"
 
 PatientList::PatientList(QWidget *parent) : QMainWindow(parent), m_table_model(nullptr) {
 	ui.setupUi(this);
-	m_patients = CsvLoader::LoadPersons("Data/patient.csv", "patient");
+	ErrorType error;
+	auto all_persons = CsvLoader::LoadAllPersons("/Data/persons.csv", error);
+	ErrorHandling::ReportError(error, "LoginScreen - Constructor");
+	m_patients = CsvLoader::FilterPatients(all_persons, error);
+	ErrorHandling::ReportError(error, "LoginScreen - Constructor");
 	m_table_model = new QStandardItemModel(this);
 	m_filter_model = new PatientFilterModel(this);
 
@@ -28,8 +34,7 @@ PatientList::PatientList(QWidget *parent) : QMainWindow(parent), m_table_model(n
 void PatientList::fillTable() {
 	m_table_model->setColumnCount(3);
 	m_table_model->setHorizontalHeaderLabels({ "Patient", "Positive", "Last test" });
-	for (const auto& p : m_patients) {
-		if (Patient* patient = dynamic_cast<Patient*>(p.get())) { //p.get returns a raw pointer but this pointer is still owned by the std::unique_ptr so destructor should not be called
+	for (const auto& patient : m_patients) {
 
 			QList<QStandardItem*> row;
 			auto fullname = new QStandardItem(QString::fromStdString(patient->getSurname() + " " + patient->getName()));
@@ -40,10 +45,6 @@ void PatientList::fillTable() {
 			last_test_date->setFlags(last_test_date->flags() & ~Qt::ItemIsEditable);
 			row << fullname <<  positive << last_test_date;
 			m_table_model->appendRow(row);
-		}
-		else {
-			//error geen patient object
-		}
 	}
 	
 }
@@ -58,7 +59,7 @@ void PatientList::onPatientDoubleClicked(const QModelIndex& _index) {
 	int row_number = source_index.row();
 	
 	if (row_number >= 0 && row_number < m_patients.size()) {
-		Patient* patient = dynamic_cast<Patient*>(m_patients[row_number].get()); //Get patient out of patient vector
+		Patient* patient = (m_patients[row_number].get()); //Get patient out of patient vector
 		if (patient) {
 			m_patient_details = new PatientDetails(patient, this);
 			m_patient_details->exec();
@@ -87,7 +88,7 @@ void PatientList::on_removepatientButton_clicked() {
 		m_patients.erase(m_patients.begin() + row_number); //.begin is nodig omdat .erase een iterator gebruikt en niet gewoon een index .begin geeft de iterator van het begin van de vector en row_number verhooogt deze dan tot naar de juiste patient gewezen wordt
 		m_table_model->removeRow(row_number);
 
-		CsvLoader::SavePatients(m_patients, "Data/patient.csv");
+		//CsvLoader::SavePatients(m_patients, "Data/patient.csv");
 	}
 
 }
@@ -103,7 +104,7 @@ void PatientList::addPatientToList(Patient* _new_patient) {
 		row << fullname <<  positive << last_test_date;
 		m_table_model->appendRow(row);
 		
-		m_patients.push_back(std::unique_ptr<Person>(_new_patient));
+		m_patients.push_back(std::unique_ptr<Patient>(_new_patient));
 }
 
 

@@ -1,3 +1,4 @@
 Name;Surname;Password;Phonenumber;Email;Positive;Last_test_date
 Ben;Aerts;1234;012345678;ben.aerts@hotmail.com;false;N/A;
 Billy;Bob;1234;047645328;billy.bob@gmail.com;false;N/A
+test;achternaam;1234;012345678;test.achternaam@gmail.com;false;N/A

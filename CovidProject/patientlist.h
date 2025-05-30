@@ -23,7 +23,8 @@ private slots:
 
 private:
 	Ui::PatientList ui;
-	std::vector<std::unique_ptr<Person>> m_patients;
+	std::vector<std::unique_ptr<Person>> m_all_persons;
+	std::vector<std::unique_ptr<Patient>> m_patients;
 	QStandardItemModel* m_table_model;
 	PatientFilterModel* m_filter_model;
 	PatientDetails* m_patient_details;

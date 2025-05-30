@@ -5,6 +5,8 @@
 #include "ui_loginscreen.h"
 #include "person.h"
 #include "csvloader.h"
+#include "patient.h"
+#include "doctor.h"
 
 class LoginScreen : public QDialog
 {
@@ -18,6 +20,6 @@ private slots:
 	void on_loginButton_clicked();
 private:
 	Ui::LoginScreen ui;
-	std::vector<std::unique_ptr<Person>> m_patients;
-	std::vector<std::unique_ptr<Person>> m_doctors;
+	std::vector<std::unique_ptr<Patient>> m_patients;
+	std::vector<std::unique_ptr<Doctor>> m_doctors;
 };
