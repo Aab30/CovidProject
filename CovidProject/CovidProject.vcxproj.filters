@@ -45,34 +45,40 @@
     <ClCompile Include="patient.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="loginscreen.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="csvloader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="doctormenu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="addpatient.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="regex_validation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="patientmenu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="patientlist.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="patientfiltermodel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="patientdetails.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="error_handling.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="session_utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="covid_analyzer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="add_patient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="csv_loader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="doctor_menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="login_screen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="patient_details.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="patient_filter_model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="patient_list.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="patient_menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -80,50 +86,27 @@
     <QtMoc Include="mainwindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="loginscreen.h">
+    <QtMoc Include="add_patient.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="doctormenu.h">
+    <QtMoc Include="doctor_menu.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="addpatient.h">
+    <QtMoc Include="login_screen.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="patientmenu.h">
+    <QtMoc Include="patient_details.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="patientlist.h">
+    <QtMoc Include="patient_list.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="patientfilltermodel.h">
+    <QtMoc Include="patient_menu.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="patientdetails.h">
+    <QtMoc Include="patient_filter_model.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-  </ItemGroup>
-  <ItemGroup>
-    <QtUic Include="mainwindow.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="loginscreen.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="doctormenu.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="addpatient.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="patientlist.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="patientmenu.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="patientdetails.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="mainwindow.qrc">
@@ -140,9 +123,6 @@
     <ClInclude Include="doctor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="csvloader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="data_types.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -152,5 +132,46 @@
     <ClInclude Include="error_handling.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="paths.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="session_utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="covid_analyzer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="csv_loader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="..\..\..\..\Downloads\FINAL_COVID_PROJECT-main(1)\FINAL_COVID_PROJECT-main\ui\covidtest.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="..\..\..\..\Downloads\FINAL_COVID_PROJECT-main(1)\FINAL_COVID_PROJECT-main\ui\doctormenu.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="..\..\..\..\Downloads\FINAL_COVID_PROJECT-main(1)\FINAL_COVID_PROJECT-main\ui\doctormenuwor.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="..\..\..\..\Downloads\FINAL_COVID_PROJECT-main(1)\FINAL_COVID_PROJECT-main\ui\loginscreen.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="..\..\..\..\Downloads\FINAL_COVID_PROJECT-main(1)\FINAL_COVID_PROJECT-main\ui\mainwindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="..\..\..\..\Downloads\FINAL_COVID_PROJECT-main(1)\FINAL_COVID_PROJECT-main\ui\patientdetails.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="..\..\..\..\Downloads\FINAL_COVID_PROJECT-main(1)\FINAL_COVID_PROJECT-main\ui\patientlist.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="..\..\..\..\Downloads\FINAL_COVID_PROJECT-main(1)\FINAL_COVID_PROJECT-main\ui\patientmenu.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="..\..\..\..\Downloads\FINAL_COVID_PROJECT-main(1)\FINAL_COVID_PROJECT-main\ui\addpatient.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
 </Project>

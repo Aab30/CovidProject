@@ -1,4 +1,4 @@
-#include "patientfilltermodel.h"
+#include "patient_filter_model.h"
 
 PatientFilterModel::PatientFilterModel(QObject* parent) : QSortFilterProxyModel(parent) {
 }

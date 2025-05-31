@@ -4,9 +4,11 @@
 #include <QMessageBox>
 #include "ui_loginscreen.h"
 #include "person.h"
-#include "csvloader.h"
+#include "csv_loader.h"
 #include "patient.h"
 #include "doctor.h"
+#include "session_utils.h"
+#include "paths.h"
 
 class LoginScreen : public QDialog
 {

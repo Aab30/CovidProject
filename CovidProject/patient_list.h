@@ -4,8 +4,9 @@
 #include <QStandardItemModel>
 #include <QSortFilterProxyModel>
 #include "person.h"
-#include "patientfilltermodel.h"
-#include "patientdetails.h"
+#include "patient_filter_model.h"
+#include "patient_details.h"
+#include "doctor.h"
 
 class PatientList : public QMainWindow
 {
@@ -25,6 +26,7 @@ private:
 	Ui::PatientList ui;
 	std::vector<std::unique_ptr<Person>> m_all_persons;
 	std::vector<std::unique_ptr<Patient>> m_patients;
+	std::vector<std::unique_ptr<Doctor>> m_doctors;
 	QStandardItemModel* m_table_model;
 	PatientFilterModel* m_filter_model;
 	PatientDetails* m_patient_details;

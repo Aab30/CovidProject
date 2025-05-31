@@ -1,4 +1,4 @@
-Name;Surname;Password;Phonenumber;Email;Positive;Last_test_date
-Ben;Aerts;1234;012345678;ben.aerts@hotmail.com;false;N/A;
-Billy;Bob;1234;047645328;billy.bob@gmail.com;false;N/A
-test;achternaam;1234;012345678;test.achternaam@gmail.com;false;N/A
+type;name;surname;password;phoneNumber;email;specialization;positive;last_test_date
+Patient;Ben;Aerts;1234;012345678;ben.aerts@hotmail.com;;false;N/A
+Patient;Nieuwe;Patient;1234;012345665;nieuwe.patient@gmail.com;;false;N/A
+Doctor;Voor;Achter;password2;012345678;voor.achter@gmail.com;longen;N/A;N/A

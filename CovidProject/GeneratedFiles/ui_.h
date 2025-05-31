@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'doctormenu.ui'
+** Form generated from reading UI file '.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.12.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_DOCTORMENU_H
-#define UI_DOCTORMENU_H
+#ifndef UI__H
+#define UI__H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -158,4 +158,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // UI_DOCTORMENU_H
+#endif // UI__H

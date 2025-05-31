@@ -21,6 +21,14 @@ void ErrorHandling::ReportError(ErrorType _error, const QString& _context) {
 	case ErrorType::Invalid_Cast:
 		message = "Cast Failed";
 		break;
+	case ErrorType::Session_Data_Missing:
+		message = "Data not available";
+		break;
+	case ErrorType::Null_Pointer:
+		message = "Pointer is null pointer";
+		break;
+	default:
+		message = "Unknown type of error";
 	}
 	qCritical() << "[" << _context << "]" << message;
 }

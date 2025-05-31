@@ -1,18 +1,17 @@
-#include "patientlist.h"
-#include "addpatient.h"
+#include "patient_list.h"
+#include "add_patient.h"
 #include "patient.h"
-#include "csvloader.h"
+#include "csv_loader.h"
 #include <QDebug>
 #include "data_types.h"
 #include "error_handling.h"
+#include "paths.h"
 
 PatientList::PatientList(QWidget *parent) : QMainWindow(parent), m_table_model(nullptr) {
 	ui.setupUi(this);
 	ErrorType error;
-	auto all_persons = CsvLoader::LoadAllPersons("/Data/persons.csv", error);
-	ErrorHandling::ReportError(error, "LoginScreen - Constructor");
-	m_patients = CsvLoader::FilterPatients(all_persons, error);
-	ErrorHandling::ReportError(error, "LoginScreen - Constructor");
+	CsvLoader::LoadAllPersons("Data/persons.csv", m_patients, m_doctors, error);
+	ErrorHandling::ReportError(error, "PatientList - Constructor");
 	m_table_model = new QStandardItemModel(this);
 	m_filter_model = new PatientFilterModel(this);
 
@@ -83,13 +82,16 @@ void PatientList::on_removepatientButton_clicked() {
 
 	QModelIndex source_index = m_filter_model->mapToSource(selected_index);
 	int row_number = source_index.row();
+	ErrorType error;
 
 	if (row_number >= 0 && row_number < m_patients.size()) {
 		m_patients.erase(m_patients.begin() + row_number); //.begin is nodig omdat .erase een iterator gebruikt en niet gewoon een index .begin geeft de iterator van het begin van de vector en row_number verhooogt deze dan tot naar de juiste patient gewezen wordt
 		m_table_model->removeRow(row_number);
 
-		//CsvLoader::SavePatients(m_patients, "Data/patient.csv");
+		CsvLoader::SaveAllPersons(m_patients, m_doctors, "Data/persons.csv", error);
 	}
+
+	ErrorHandling::ReportError(error, "PatientList - on_removepatientButton_clicked]");
 
 }
 

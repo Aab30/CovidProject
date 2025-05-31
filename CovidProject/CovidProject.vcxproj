@@ -113,77 +113,86 @@
     </QtRcc>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="addpatient.cpp" />
-    <ClCompile Include="csvloader.cpp" />
+    <ClCompile Include="add_patient.cpp" />
+    <ClCompile Include="covid_analyzer.cpp" />
+    <ClCompile Include="csv_loader.cpp" />
     <ClCompile Include="doctor.cpp" />
-    <ClCompile Include="doctormenu.cpp" />
+    <ClCompile Include="doctor_menu.cpp" />
     <ClCompile Include="error_handling.cpp" />
-    <ClCompile Include="loginscreen.cpp" />
+    <ClCompile Include="login_screen.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainwindow.cpp" />
     <ClCompile Include="patient.cpp" />
-    <ClCompile Include="patientdetails.cpp" />
-    <ClCompile Include="patientfiltermodel.cpp" />
-    <ClCompile Include="patientlist.cpp" />
-    <ClCompile Include="patientmenu.cpp" />
+    <ClCompile Include="patient_details.cpp" />
+    <ClCompile Include="patient_filter_model.cpp" />
+    <ClCompile Include="patient_list.cpp" />
+    <ClCompile Include="patient_menu.cpp" />
     <ClCompile Include="person.cpp" />
     <ClCompile Include="regex_validation.cpp" />
+    <ClCompile Include="session_utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="mainwindow.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="addpatient.ui" />
-    <QtUic Include="doctormenu.ui" />
-    <QtUic Include="loginscreen.ui">
-      <SubType>Designer</SubType>
-    </QtUic>
-    <QtUic Include="mainwindow.ui" />
-    <QtUic Include="patientdetails.ui" />
-    <QtUic Include="patientlist.ui" />
-    <QtUic Include="patientmenu.ui" />
-  </ItemGroup>
-  <ItemGroup>
     <QtRcc Include="mainwindow.qrc" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="patientmenu.h">
+    <ClInclude Include="covid_analyzer.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
+    </ClInclude>
+    <ClInclude Include="session_utils.h" />
+    <QtMoc Include="patient_menu.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
     </QtMoc>
-    <QtMoc Include="patientlist.h">
+    <QtMoc Include="patient_list.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
     </QtMoc>
-    <QtMoc Include="patientfilltermodel.h">
+    <QtMoc Include="patient_filter_model.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
     </QtMoc>
-    <QtMoc Include="patientdetails.h">
+    <QtMoc Include="patient_details.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
     </QtMoc>
     <ClInclude Include="error_handling.h" />
+    <ClInclude Include="paths.h" />
     <ClInclude Include="regex_validation.h" />
-    <QtMoc Include="addpatient.h">
+    <QtMoc Include="add_patient.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
     </QtMoc>
-    <ClInclude Include="csvloader.h" />
+    <ClInclude Include="csv_loader.h" />
     <ClInclude Include="data_types.h" />
     <ClInclude Include="doctor.h" />
-    <QtMoc Include="loginscreen.h">
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
+    <QtMoc Include="login_screen.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
       <Define Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">QT_QML_DEBUG;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB</Define>
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
       <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB</Define>
     </QtMoc>
-    <QtMoc Include="doctormenu.h">
+    <QtMoc Include="doctor_menu.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
     </QtMoc>
     <ClInclude Include="patient.h" />
     <ClInclude Include="person.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="..\..\..\..\Downloads\FINAL_COVID_PROJECT-main(1)\FINAL_COVID_PROJECT-main\ui\addpatient.ui" />
+    <QtUic Include="..\..\..\..\Downloads\FINAL_COVID_PROJECT-main(1)\FINAL_COVID_PROJECT-main\ui\covidtest.ui" />
+    <QtUic Include="..\..\..\..\Downloads\FINAL_COVID_PROJECT-main(1)\FINAL_COVID_PROJECT-main\ui\doctormenu.ui" />
+    <QtUic Include="..\..\..\..\Downloads\FINAL_COVID_PROJECT-main(1)\FINAL_COVID_PROJECT-main\ui\doctormenuwor.ui" />
+    <QtUic Include="..\..\..\..\Downloads\FINAL_COVID_PROJECT-main(1)\FINAL_COVID_PROJECT-main\ui\loginscreen.ui" />
+    <QtUic Include="..\..\..\..\Downloads\FINAL_COVID_PROJECT-main(1)\FINAL_COVID_PROJECT-main\ui\mainwindow.ui" />
+    <!-- Removed patientaccount.ui reference here -->
+    <QtUic Include="..\..\..\..\Downloads\FINAL_COVID_PROJECT-main(1)\FINAL_COVID_PROJECT-main\ui\patientdetails.ui" />
+    <QtUic Include="..\..\..\..\Downloads\FINAL_COVID_PROJECT-main(1)\FINAL_COVID_PROJECT-main\ui\patientlist.ui" />
+    <QtUic Include="..\..\..\..\Downloads\FINAL_COVID_PROJECT-main(1)\FINAL_COVID_PROJECT-main\ui\patientmenu.ui" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

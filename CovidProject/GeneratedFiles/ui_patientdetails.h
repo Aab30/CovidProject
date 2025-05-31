@@ -12,7 +12,9 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QTableView>
 
 QT_BEGIN_NAMESPACE
@@ -20,16 +22,45 @@ QT_BEGIN_NAMESPACE
 class Ui_PatientDetails
 {
 public:
+    QGridLayout *gridLayout;
+    QSpacerItem *verticalSpacer;
+    QSpacerItem *verticalSpacer_2;
+    QSpacerItem *horizontalSpacer;
     QTableView *patientdetailsView;
+    QSpacerItem *horizontalSpacer_2;
 
     void setupUi(QDialog *PatientDetails)
     {
         if (PatientDetails->objectName().isEmpty())
             PatientDetails->setObjectName(QString::fromUtf8("PatientDetails"));
-        PatientDetails->resize(400, 300);
+        PatientDetails->resize(540, 432);
+        PatientDetails->setMinimumSize(QSize(300, 400));
+        gridLayout = new QGridLayout(PatientDetails);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Preferred);
+
+        gridLayout->addItem(verticalSpacer, 2, 1, 1, 1);
+
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Preferred);
+
+        gridLayout->addItem(verticalSpacer_2, 0, 1, 1, 1);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer, 1, 0, 1, 1);
+
         patientdetailsView = new QTableView(PatientDetails);
         patientdetailsView->setObjectName(QString::fromUtf8("patientdetailsView"));
-        patientdetailsView->setGeometry(QRect(25, 21, 351, 261));
+        QFont font;
+        font.setFamily(QString::fromUtf8("Menlo"));
+        patientdetailsView->setFont(font);
+
+        gridLayout->addWidget(patientdetailsView, 1, 1, 1, 1);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer_2, 1, 2, 1, 1);
+
 
         retranslateUi(PatientDetails);
 
